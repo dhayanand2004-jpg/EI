@@ -36,8 +36,6 @@ class West implements Direction {
     public Position moveForward(Position pos) { return new Position(pos.x - 1, pos.y); }
     public String toString() { return "W"; }
 }
-
-// Position class
 class Position {
     final int x;
     final int y;
@@ -47,8 +45,6 @@ class Position {
         this.y = y;
     }
 }
-
-// Composite pattern for grid components
 interface GridComponent {
     boolean isObstacleAt(int x, int y);
 }
@@ -93,7 +89,6 @@ class Grid implements GridComponent {
     }
 }
 
-// Rover class - receiver
 class Rover {
     private Position position;
     private Direction direction;
@@ -133,7 +128,6 @@ class Rover {
     }
 }
 
-// Command interface and concrete commands
 interface Command {
     void execute();
 }
@@ -174,7 +168,6 @@ class RightCommand implements Command {
     }
 }
 
-// Invoker class
 class CommandInvoker {
     private final List<Command> history = new ArrayList<>();
 
@@ -184,7 +177,6 @@ class CommandInvoker {
     }
 }
 
-// Mars Rover Simulator - the client
 public class MarsRoverSimulator {
     private final Grid grid;
     private final Rover rover;
@@ -224,7 +216,6 @@ public class MarsRoverSimulator {
         return rover.getStatusReport();
     }
 
-    // Main method for demonstration
     public static void main(String[] args) {
         List<Position> obstacles = List.of(new Position(2, 2), new Position(3, 5));
         MarsRoverSimulator simulator = new MarsRoverSimulator(10, 10, 0, 0, 'N', obstacles);
@@ -233,3 +224,4 @@ public class MarsRoverSimulator {
         System.out.println(simulator.getStatusReport());
     }
 }
+
